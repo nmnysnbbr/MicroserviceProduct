@@ -6,6 +6,7 @@ import com.universal_yazilim.bid.ysm.product_app.utility.Util;
 import org.springframework.dao.OptimisticLockingFailureException;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -65,7 +66,9 @@ public class ProductService extends AbstractProductService
     @Override
     public List<Product> getAll()
     {
-        return productRepository.findAll();
+        List<Product> productList = productRepository.findAll();
+        Collections.sort(productList);
+        return productList;
     }
 
     @Override
